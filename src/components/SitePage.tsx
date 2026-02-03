@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Product = {
   name: string;
   description: string;
@@ -49,13 +51,18 @@ const Section = ({ id, children }: { id?: string; children: React.ReactNode }) =
 );
 
 export default function SitePage({ copy }: Props) {
+  const productImages = [
+    "/assets/product-nutra.avif",
+    "/assets/product-oil.avif",
+    "/assets/product-shampoo.avif",
+  ];
+
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-emerald-600" />
-            <span className="text-lg font-semibold tracking-tight">Pharma Hermetic</span>
+            <Image src="/assets/logo.svg" alt="Pharma Hermetic" width={140} height={36} className="h-9 w-auto" />
           </div>
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
             <a href="#home" className="hover:text-emerald-700">{copy.nav.home}</a>
@@ -116,9 +123,17 @@ export default function SitePage({ copy }: Props) {
               </div>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-emerald-50 to-white p-8 shadow-sm">
-              <div className="aspect-[4/5] w-full rounded-2xl bg-white shadow-md" />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white shadow-md">
+                <Image
+                  src="/assets/hero.bmp"
+                  alt="Pharma Hermetic hair recovery"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
               <p className="mt-6 text-sm text-slate-500">
-                Product imagery placeholder. We will replace with official product visuals.
+                Official product imagery from Pharma Hermetic.
               </p>
             </div>
           </div>
@@ -163,6 +178,26 @@ export default function SitePage({ copy }: Props) {
                   </div>
                 ))}
               </div>
+              <div className="mt-10 grid gap-6 md:grid-cols-2">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                  <Image
+                    src="/assets/before-elena.avif"
+                    alt="Before treatment"
+                    width={600}
+                    height={420}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                  <Image
+                    src="/assets/after-elena.avif"
+                    alt="After treatment"
+                    width={600}
+                    height={420}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </Section>
@@ -193,9 +228,17 @@ export default function SitePage({ copy }: Props) {
               </a>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {copy.sections.products.items.map((product) => (
+              {copy.sections.products.items.map((product, index) => (
                 <div key={product.name} className="rounded-2xl border border-slate-200 p-6">
-                  <div className="h-40 rounded-xl bg-slate-100" />
+                  <div className="relative h-40 overflow-hidden rounded-xl bg-slate-100">
+                    <Image
+                      src={productImages[index]}
+                      alt={product.name}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
                   <h3 className="mt-4 text-lg font-semibold">{product.name}</h3>
                   <p className="mt-2 text-sm text-slate-600">{product.description}</p>
                   <div className="mt-4 flex items-center justify-between">
