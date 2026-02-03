@@ -62,7 +62,7 @@ export default function SitePage({ copy }: Props) {
       <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <Image src="/assets/logo.svg" alt="Pharma Hermetic" width={200} height={48} className="h-12 w-auto" />
+            <Image src="/assets/logo.svg" alt="Pharma Hermetic" width={260} height={62} className="h-16 w-auto" />
           </div>
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
             <a href="#home" className="hover:text-emerald-700">{copy.nav.home}</a>
